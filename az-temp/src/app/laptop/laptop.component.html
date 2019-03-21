@@ -1,0 +1,50 @@
+<!-- <div [ngClass]="{product_heading:true}" class="card-panel teal lighten-2"> {{heading}}</div>
+<div>
+  <ul>
+    <li *ngFor="let i of laptop" [ngClass]="{text_box:true}">
+      <div>Name:{{i.name}}</div>
+      <div>Model:{{i.model}}</div>
+      <div>Ram: {{i.ram}}</div>
+      <div>Storage: {{i.storage}}</div>
+      <div>Processor: {{i.processor}}</div>
+      <div>Price:{{i.price | currency:"INR"}}</div>
+      <div *ngIf="i.stock>0;else abc">In Stock</div>
+      <ng-template #abc>Out of Stock...</ng-template>
+    </li>
+  </ul>
+</div> -->
+
+<div class="card-panel teal lighten-2">
+  <h4>Product: Laptop</h4>
+</div>
+<h6 class="card-panel #4dd0e1 cyan lighten-2">Items in stock: {{ calProduct() }}</h6>
+
+<div>
+  <ul>
+    <li *ngFor="let i of laptop" class="card_inline">
+      <div class="card" [ngClass]="{ card_block: true }">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" [src]="i.img" />
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4" [ngStyle]="{ 'font-size.px': 18 }">{{ i.name }}<i
+              class="material-icons right">...</i></span>
+          <p *ngIf="i.stock > 0; else abc"><a href="#">Add to Cart</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4" [ngStyle]="{ 'font-size.px': 16 }">{{ i.name }}<i
+              class="material-icons right">X</i></span>
+          <div>Model:{{i.model}}</div>
+          <div>Ram: {{i.ram}}</div>
+          <div>Storage: {{i.storage}}</div>
+          <div>Processor: {{i.processor}}</div>
+          <div>Price:{{i.price | currency:"INR"}}</div>
+          <div *ngIf="i.stock > 0; else abc">{{ i.stock }} In stock</div>
+          <ng-template #abc>
+            <div>Out of stock..</div>
+          </ng-template>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,48 @@
+<!-- <div [ngClass]="{product_heading:true}" class="card-panel teal lighten-2"> {{heading}}</div>
+<div>
+  <ul>
+    <li *ngFor="let i of cosmatics" [ngClass]="{text_box:true}">
+      <div class=abc>Name:{{i.brand}}</div>
+      <div>Shade:
+        <span [ngClass]="{shade:true}" [ngStyle]="{'background-color':'i.shade'}"></span><br>
+      </div>
+      <div>Price:{{i.price | currency:"INR"}}</div>
+      <div *ngIf="i.stock>0;else abc">In Stock</div>
+      <ng-template #abc>Out of Stock...</ng-template>
+    </li>
+  </ul>
+</div> -->
+
+<div class="card-panel teal lighten-2">
+  <h4>Product: Cosmatics</h4>
+</div>
+<h6 class="card-panel #4dd0e1 cyan lighten-2">Items in stock: {{ calProduct() }}</h6>
+
+<div>
+  <ul>
+    <li *ngFor="let i of cosmatics" class="card_inline">
+      <div class="card" [ngClass]="{ card_block: true }">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" src="./assets/cos.jpg" />
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4" [ngStyle]="{ 'font-size.px': 18 }">{{i.brand}}<i
+              class="material-icons right">...</i></span>
+          <p *ngIf="i.stock > 0; else abc"><a href="#">Add to Cart</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4" [ngStyle]="{ 'font-size.px': 18 }">{{i.brand}}<i
+              class="material-icons right">X</i></span>
+          <div>Shade:
+            <span [ngClass]="{shade:true}" [ngStyle]="{'background-color':'i.shade'}"></span><br>
+          </div>
+          <div>Price:{{i.price | currency:"INR"}}</div>
+          <div *ngIf="i.stock > 0; else abc">{{ i.stock }} In stock</div>
+          <ng-template #abc>
+            <div>Out of stock..</div>
+          </ng-template>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

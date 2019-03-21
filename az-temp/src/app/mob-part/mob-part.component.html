@@ -1,0 +1,48 @@
+<div class="card-panel teal lighten-2">
+  <h4>Product: Device</h4>
+</div>
+<h6 class="card-panel #4dd0e1 cyan lighten-2">Items in stock: {{ calProduct() }}</h6>
+
+<div>
+  <ul>
+    <li *ngFor="let i of mobparts" class="card_inline">
+      <div class="card" [ngClass]="{ card_block: true }">
+        <div class="card-image waves-effect waves-block waves-light">
+          <img class="activator" [src]="i.img" width="200px;" height="300px;" />
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4" [ngStyle]="{ 'font-size.px': 18 }">{{ i.name }}<i
+              class="material-icons right">...</i></span>
+          <p *ngIf="i.stock > 0; else abc"><a href="#">Add to Cart</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4" [ngStyle]="{ 'font-size.px': 16 }">{{ i.name }}<i
+              class="material-icons right">X</i></span>
+          <div [ngStyle]="{ 'font-size.px': 21 }" [style.color]="i.col">
+            Id: {{ i.id }}
+          </div>
+          <div>Price:{{i.price | currency:"INR"}}</div>
+          <!-- <span [ngSwitch]="i.country">
+            Country:
+            <img *ngSwitchCase="'India'"
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png"
+              width="24" />
+            <img *ngSwitchCase="'Australia'"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Australia_%28converted%29.svg/1200px-Flag_of_Australia_%28converted%29.svg.png"
+              width="24" />
+            <img *ngSwitchCase="'Germany'"
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1280px-Flag_of_Germany.svg.png"
+              width="24" />
+            <img *ngSwitchDefault
+              src="https://www.united-states-flag.com/media/catalog/product/cache/2/image/9df78eab33525d08d6e5fb8d27136e95/u/s/usa35n_os_-00_main_3ft-x-5ft-nylon-us-flag-online-stores-brand.jpg"
+              width="24" />
+          </span> -->
+          <div *ngIf="i.stock > 0; else abc">{{ i.stock }} In stock</div>
+          <ng-template #abc>
+            <div>Out of stock..</div>
+          </ng-template>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
